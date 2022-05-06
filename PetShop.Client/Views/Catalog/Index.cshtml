@@ -1,20 +1,18 @@
-﻿
+﻿@model PetShop.Client.Models.CatalogViewModel
 @{
     ViewData["Title"] = "Index";
 }
 
 <h1>Catalog of Pets:</h1>
+<div>
+    <ul>
+        @foreach(var category in Model.CategoryList)
+        {
+            <li>
+                @category.Name
+            </li>
+        }
+    </ul>
+</div>
 
-<header class="vertical-menu">
-  <h2 class="text-center">Catagories</h2>
-  <nav>
-  <ul>
-  <li><a href="#">Mammals</a></li>
-  <li><a href="#">Reptiles</a></li>
-  <li><a href="#">Poultry</a></li>
-  <li><a href="#">Insects</a></li>
-  <li><a href="#">Fishs</a></li>
-  </ul>
-  </nav>
-</header>
 

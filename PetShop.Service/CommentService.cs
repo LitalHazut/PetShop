@@ -17,22 +17,33 @@ namespace PetShop.Service
             _commentRepository = commentRepository;
         }
 
-        public bool CreateNewByAnimalId(string comment, int id)
+        public void Create(Comment entity)
         {
             throw new NotImplementedException();
         }
 
-        public bool DeleteByAnimalId(int id)
+        public void Delete(Comment entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Comment Get(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Comment> GetAll()
         {
             throw new NotImplementedException();
         }
 
         public IEnumerable<Comment> GetByAnimalId(int id)
         {
-            throw new NotImplementedException();
+            return _commentRepository.GetAll()
+                .Where(c => c.AnimalId == id);    
         }
 
-        public bool UpdateById(int id, string comment)
+        public bool Update(Comment entity)
         {
             throw new NotImplementedException();
         }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PetShop.Service
 {
-    public class AnimalService:IAnimalService
+    public class AnimalService : IAnimalService
     {
         private readonly IAnimalRepository _animalRepository;
         public AnimalService(IAnimalRepository animalRepository)
@@ -17,35 +17,38 @@ namespace PetShop.Service
             _animalRepository = animalRepository;
         }
 
-        public bool Create(Animal animal)
+        public void Create(Animal animal)
         {
             throw new NotImplementedException();
         }
 
-        public bool DeleteById(int id)
+        public void Delete(Animal animal)
         {
-            _animalRepository.Delete(GetById(id));
-            return true;
+            _animalRepository.Delete(animal);
+
         }
 
-        public bool EditDetalis(Animal animal)
+        public bool Update(Animal animal)
         {
             throw new NotImplementedException();
         }
 
         public IEnumerable<Animal> GetAll()
         {
-            throw new NotImplementedException();
+            return _animalRepository.GetAll();
         }
 
-        public Animal GetById(int id)
+        public Animal Get(int id)
         {
             return _animalRepository.Get(id);
         }
 
         public IEnumerable<Animal> SerachByName(string name)
         {
-            throw new NotImplementedException();
+            return _animalRepository.GetAll().
+                Where(animal => animal.Name.ToLower().Contains(name.ToLower()));
         }
+
+
     }
 }

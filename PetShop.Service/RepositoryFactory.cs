@@ -18,7 +18,7 @@ namespace PetShop.Service
             return animalRepo;
         }
 
-        public ICategoryRepository CreateCategoryRepository()
+        public ICategoryRepository CreateCategoryRepo()
         {
             CategoryRepository categoryRepo = new(new PetShopDataContext());
             return categoryRepo;

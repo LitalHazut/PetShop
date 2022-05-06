@@ -30,9 +30,9 @@ namespace PetShop.Data.Repositories
            
         }
 
-        public Comment? Get(int id)
+        public Comment Get(int id)
         {
-            return _context.Comments.FirstOrDefault(comment=>comment.CommentId==id);            
+            return _context.Comments.First(comment=>comment.CommentId==id);            
             
                 
         }

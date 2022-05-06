@@ -31,10 +31,10 @@ namespace PetShop.Data.Repositories
 
         }
 
-        public Animal? Get(int id)
+        public Animal Get(int id)
         {
 
-            return _context.Animals.FirstOrDefault(animal => animal.AnimalId == id);
+            return _context.Animals.First(animal => animal.AnimalId == id);
            
         }
 

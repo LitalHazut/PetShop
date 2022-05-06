@@ -7,16 +7,8 @@ using System.Threading.Tasks;
 
 namespace PetShop.Service.Interfaces
 {
-    public interface IAnimalService
+    public interface IAnimalService: ICRUDService<Animal>
     {
-        Animal GetById(int id);
         IEnumerable<Animal> SerachByName(string name);
-        bool Create(Animal animal);
-        bool DeleteById(int id);
-        bool EditDetalis(Animal animal);
-        IEnumerable<Animal> GetAll();
-
-        
-
     }
 }

@@ -29,9 +29,9 @@ namespace PetShop.Data.Repositories
             _context.SaveChanges();
         }
 
-        public Category? Get(int id)
+        public Category Get(int id)
         {
-            return _context.Categories.FirstOrDefault(Category => Category.CategoryId == id);
+            return _context.Categories.First(Category => Category.CategoryId == id);
         }
 
         public IEnumerable<Category> GetAll()

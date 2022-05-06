@@ -11,7 +11,7 @@ namespace PetShop.Service.Interfaces
     {
         IAnimalRepository CreateAnimalRepo();
         ICommentRepository CreateCommentRepo();
-        ICategoryRepository CreateCategoryRepository();
+        ICategoryRepository CreateCategoryRepo();
 
 
     }

@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace PetShop.Service.Interfaces
 {
-    public interface ICommentService
+    public interface ICommentService:ICRUDService<Comment>
     {
         IEnumerable<Comment> GetByAnimalId(int id);
-        public bool CreateNewByAnimalId(string comment, int id);
-        public bool DeleteByAnimalId(int id);
-        public bool UpdateById(int id, string comment);
+        
+        
+
     }
 }
