@@ -19,18 +19,37 @@ namespace PetShop.Client.Controllers
             var petShopDataContext = _context.Animals.Include(a => a.Category);
             return View(await petShopDataContext.ToListAsync());
         }
+
+        
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var animal = await _context.Animals
+                .Include(a => a.Category)
+                .FirstOrDefaultAsync(m => m.AnimalId == id);
+            if (animal == null)
+            {
+                return NotFound();
+            }
+
+            return View(animal);
+        }
+
+        
         public IActionResult Create()
         {
             ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "Name");
             return View();
         }
 
-        // POST: Animals/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("AnimalId,Name,Description,BirthDate,PhotoUrl,CategoryId")] Animal animal)
+        public async Task<IActionResult> Create([Bind("AnimalId,Name,Description,BirthDate,PhotoUrl,CategoryId,Comments")] Animal animal)
         {
             if (ModelState.IsValid)
             {
@@ -38,9 +57,10 @@ namespace PetShop.Client.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "Name", animal.CategoryId);
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "Name", animal.CategoryId,"Comments");
             return View(animal);
         }
+
 
         public async Task<IActionResult> Edit(int? id)
         {
@@ -58,9 +78,7 @@ namespace PetShop.Client.Controllers
             return View(animal);
         }
 
-        // POST: Animals/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("AnimalId,Name,Description,BirthDate,PhotoUrl,CategoryId")] Animal animal)
@@ -94,27 +112,6 @@ namespace PetShop.Client.Controllers
             return View(animal);
         }
 
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var animal = await _context.Animals
-                .Include(a => a.Category)
-                .FirstOrDefaultAsync(m => m.AnimalId == id);
-            if (animal == null)
-            {
-                return NotFound();
-            }
-
-            return View(animal);
-        }
-
-
-
-        // GET: Animals/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -133,7 +130,7 @@ namespace PetShop.Client.Controllers
             return View(animal);
         }
 
-        // POST: Animals/Delete/5
+
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -148,8 +145,6 @@ namespace PetShop.Client.Controllers
         {
             return _context.Animals.Any(e => e.AnimalId == id);
         }
-
-
 
 
 

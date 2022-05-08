@@ -40,3 +40,6 @@ body {
     height: 70px;
     width: 70px;
 }
+li {
+    margin: 20px;
+}
