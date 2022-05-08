@@ -2,17 +2,30 @@
 @{
     ViewData["Title"] = "Index";
 }
+<link rel="stylesheet" href="~/css/Catalog.css" asp-append-version="true" />
 
-<h1>Catalog of Pets:</h1>
-<div>
-    <ul>
-        @foreach(var category in Model.CategoryList)
+<h1>Catalog of Animals:</h1>
+<div class="catalogBody">
+    <div class="categoriesList">
+        <p >Categories</p>
+        <ul>
+            <li>All Animals</li>
+            @foreach (var category in Model.CategoryList)
+            {
+                <li>
+                    @category.Name
+                </li>
+            }
+        </ul>
+    </div>
+    <div class="animalList">
+        @foreach (var animal in Model.AnimalList)
         {
-            <li>
-                @category.Name
-            </li>
+            <div class="animalDiv">
+                @animal.Name
+            </div>
         }
-    </ul>
+    </div>
 </div>
 
 

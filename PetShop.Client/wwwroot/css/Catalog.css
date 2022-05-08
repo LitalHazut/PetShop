@@ -1,0 +1,45 @@
+﻿body {
+    width: 100%
+}
+
+.catalogBody {
+    display: flex;
+    direction: ltr;
+    position: relative;
+    right: 60px;
+}
+
+.catalogList {
+    padding: 50px;
+    flex-grow: 1;
+}
+
+.categoryList {
+    flex-grow: 1;
+}
+
+li {
+    list-style-type: none;
+    margin: 20px;
+    
+}
+
+.animalList {
+    display: flex;
+    flex-direction: row;
+    border: solid black 2px;
+    text-align: center;
+    width: 100%;
+}
+
+.animalDiv {
+    display: flex;
+}
+
+li:hover {
+    text-decoration: underline;
+}
+
+h1 {
+    text-align: center;
+}
