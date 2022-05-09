@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PetShop.Service
 {
-    public class CommentService:ICommentService
+    public class CommentService : ICommentService
     {
         private readonly ICommentRepository _commentRepository;
         public CommentService(ICommentRepository commentRepository)
@@ -17,35 +17,35 @@ namespace PetShop.Service
             _commentRepository = commentRepository;
         }
 
-        public void Create(Comment entity)
+        public void Create(Comment comment)
         {
-            throw new NotImplementedException();
+            _commentRepository.Create(comment);
         }
 
-        public void Delete(Comment entity)
+        public void Delete(Comment comment)
         {
-            throw new NotImplementedException();
+            _commentRepository.Delete(comment);
         }
 
         public Comment Get(int id)
         {
-            throw new NotImplementedException();
+           return _commentRepository.Get(id);   
         }
 
         public IEnumerable<Comment> GetAll()
         {
-            throw new NotImplementedException();
+            return _commentRepository.GetAll();
         }
 
         public IEnumerable<Comment> GetByAnimalId(int id)
         {
             return _commentRepository.GetAll()
-                .Where(c => c.AnimalId == id);    
+                .Where(c => c.AnimalId == id);
         }
 
-        public bool Update(Comment entity)
+        public bool Update(Comment comment)
         {
-            throw new NotImplementedException();
+            return _commentRepository.Update(comment);
         }
     }
 }

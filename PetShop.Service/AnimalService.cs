@@ -19,7 +19,7 @@ namespace PetShop.Service
 
         public void Create(Animal animal)
         {
-            throw new NotImplementedException();
+            _animalRepository.Create(animal);
         }
 
         public void Delete(Animal animal)
@@ -30,7 +30,7 @@ namespace PetShop.Service
 
         public bool Update(Animal animal)
         {
-            throw new NotImplementedException();
+            return _animalRepository.Update(animal);
         }
 
         public IEnumerable<Animal> GetAll()

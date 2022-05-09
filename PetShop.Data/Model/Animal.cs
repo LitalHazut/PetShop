@@ -29,5 +29,6 @@ namespace PetShop.Data.Model
         public virtual Category? Category { get; set; }
         [InverseProperty("Animal")]
         public virtual ICollection<Comment> Comments { get; set; }
+
     }
 }

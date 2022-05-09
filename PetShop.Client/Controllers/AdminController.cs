@@ -49,7 +49,7 @@ namespace PetShop.Client.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("AnimalId,Name,Description,BirthDate,PhotoUrl,CategoryId,Comments")] Animal animal)
+        public async Task<IActionResult> Create([Bind("AnimalId,Name,Description,BirthDate,PhotoUrl,CategoryId")] Animal animal)
         {
             if (ModelState.IsValid)
             {
@@ -57,7 +57,7 @@ namespace PetShop.Client.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "Name", animal.CategoryId,"Comments");
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "Name", animal.CategoryId);
             return View(animal);
         }
 

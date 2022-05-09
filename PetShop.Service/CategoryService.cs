@@ -17,19 +17,19 @@ namespace PetShop.Service
             _categoryRepository = categoryRepository;
         }
 
-        public void Create(Category entity)
+        public void Create(Category category)
         {
-            throw new NotImplementedException();
+          _categoryRepository.Create(category);
         }
 
-        public void Delete(Category entity)
+        public void Delete(Category category)
         {
-            throw new NotImplementedException();
+            _categoryRepository.Delete(category);
         }
 
         public Category Get(int id)
         {
-            throw new NotImplementedException();
+            return _categoryRepository.Get(id);
         }
 
         public IEnumerable<Category> GetAll()
@@ -38,9 +38,9 @@ namespace PetShop.Service
                             
         }
 
-        public bool Update(Category entity)
+        public bool Update(Category category)
         {
-            throw new NotImplementedException();
+           return _categoryRepository.Update(category);   
         }
     }
 }
