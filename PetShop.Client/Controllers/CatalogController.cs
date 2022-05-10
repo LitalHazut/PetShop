@@ -47,30 +47,7 @@ namespace PetShop.Client.Controllers
             return View(animal);
         }
 
-       
-        [HttpPost]
-        public ActionResult AddComment([Bind("Content,AnimalId")] Comment comment, Animal animal)
-        {
-            if (comment.Content != null)
-            {
-                var com = new Comment { AnimalId = animal.AnimalId };
-                commentService.Create(com);
-                animalService.Update(animal);
-                List<Comment> commentList = commentService.GetAll().Where(cmId => cmId.AnimalId == comment.AnimalId).ToList();
-            }
-            return RedirectToAction("Detalis");
-
-
-
-
-
-
-
-
-
-        }
-
-
+     
 
     }
 }

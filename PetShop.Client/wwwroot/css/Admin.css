@@ -1,6 +1,11 @@
 ﻿body {
 
 }
-#Content {
+#textArea {
     width: 30%;
+}
+img {
+    height: 150px;
+    width: auto;
+    align-content:center
 }

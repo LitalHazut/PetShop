@@ -9,7 +9,7 @@ namespace PetShop.Data.Repositories.Interfaces
 {
     public interface ICommentRepository:IRepository<Comment>
     {
-       
+      
 
     }
 }

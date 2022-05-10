@@ -28,13 +28,10 @@
             <dd class="col-sm-10">
                 @Html.DisplayFor(model => model.BirthDate)
             </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.PhotoUrl)
-            </dt>
             <dd class="col-sm-10">
                 <img src=@Url.Content(@Model.PhotoUrl) />
             </dd>
-            <dt class="col-sm-2">
+            <dt class="d-flex">
                 @Html.DisplayNameFor(model => model.Category)
             </dt>
             <dd class="col-sm-10">
@@ -42,10 +39,21 @@
             </dd>
     </div>
     <div>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Comments)
+        </dt>
         <form asp-action="AddComment" id="addcomment" asp-all-route-id="@Model?.AnimalId">
-           <textarea id=textArea class="form-control" rows=4 name="myComment"></textarea>
-            <input type="submit" value="AddComment"/>
+            <input type="hidden" asp-for="AnimalId" />
+            <textarea id="textArea" class="form-control" rows=3 name="myComment" placeholder="Enter your comment"></textarea>
+            <input type="submit" id="btnClick" value="AddComment" />
         </form>
+    </div>
+    <div class="d-flex">
+        @foreach (var comment in @ViewBag.CommentsAnimal)
+        {   
+            @comment
+            <a asp-action="DeleteComment" asp-controller="Admin" asp-route-id="@Model?.AnimalId">Delete</a>
+        }
     </div>
     </dl>
 </div>

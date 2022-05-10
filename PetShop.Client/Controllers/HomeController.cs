@@ -17,7 +17,6 @@ namespace PetShop.Client.Controllers
 
         public IActionResult Index()
         {
-            
 
             return View();
         }

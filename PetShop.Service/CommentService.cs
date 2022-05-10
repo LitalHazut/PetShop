@@ -37,7 +37,7 @@ namespace PetShop.Service
             return _commentRepository.GetAll();
         }
 
-        public IEnumerable<Comment> GetByAnimalId(int id)
+        public IQueryable<Comment> GetByAnimalId(int id)
         {
             return _commentRepository.GetAll()
                 .Where(c => c.AnimalId == id);

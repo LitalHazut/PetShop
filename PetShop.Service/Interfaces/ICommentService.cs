@@ -9,7 +9,7 @@ namespace PetShop.Service.Interfaces
 {
     public interface ICommentService:ICRUDService<Comment>
     {
-        IEnumerable<Comment> GetByAnimalId(int id);
+        IQueryable<Comment> GetByAnimalId(int id);
         
         
 

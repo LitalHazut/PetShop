@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PetShop.Data.Model;
+using PetShop.Service;
 using PetShop.Service.Interfaces;
 
 namespace PetShop.Client.Controllers
@@ -10,10 +11,12 @@ namespace PetShop.Client.Controllers
     {
         private readonly IAnimalService _animalService;
         private readonly ICategoryService _categoryService;
-        public AdminController(IAnimalService animalService, ICategoryService categoryService)
+        private readonly ICommentService _commentService;
+        public AdminController(IAnimalService animalService, ICategoryService categoryService, ICommentService commentService)
         {
             _animalService = animalService;
             _categoryService = categoryService;
+            _commentService = commentService;
         }
         public IActionResult Index()
         {
@@ -31,6 +34,8 @@ namespace PetShop.Client.Controllers
                 .FirstOrDefaultAsync(m => m.AnimalId == id);
             if (animal == null)
                 return NotFound();
+            ViewBag.CommentsAnimal = _commentService.GetByAnimalId(animal.AnimalId);
+            
 
             return View(animal);
         }
@@ -112,10 +117,10 @@ namespace PetShop.Client.Controllers
             return View(animal);
         }
 
-        
+
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public IActionResult DeleteConfirmed(int id)
         {
             var animal = _animalService.Get(id);
             _animalService.Delete(animal.AnimalId);
@@ -126,6 +131,34 @@ namespace PetShop.Client.Controllers
         {
             return _animalService.GetAll().Any(e => e.AnimalId == id);
         }
+
+        public ActionResult AddComment(Animal animal, [Bind("myComment")] string myComment)
+        {
+            if (myComment != null)
+            {
+                var Newcomment = new Comment { AnimalId = animal.AnimalId, Content = myComment };
+                _commentService.Create(Newcomment);
+
+            }
+            return RedirectToAction("Detalis", new { id = animal.AnimalId });
+
+        }
+        public async Task<ActionResult> DeleteComment(int? id)
+        {
+            if (id == null) return NotFound();
+
+            var comment = await _commentService.GetAll()
+                .FirstOrDefaultAsync(c => c.CommentId == id);
+
+            if (comment == null) return NotFound();
+            _commentService.Delete(comment.CommentId);
+
+
+            return RedirectToAction("Detalis", new { id = comment.AnimalId });
+
+        }
+
+
 
     }
 }
