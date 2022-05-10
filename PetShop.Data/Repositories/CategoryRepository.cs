@@ -19,38 +19,37 @@ namespace PetShop.Data.Repositories
 
         public void Create(Category category)
         {
-            _context.Add(category);
+            _context.Categories.Add(category);
             _context.SaveChanges(); 
         }
 
-        public void Delete(Category category)
+        public Category Delete(int categoryId)
         {
-            _context.Remove(category);
+            var tmpCategory = Get(categoryId);
+            if (tmpCategory == null) return null;
+            _context.Categories.Remove(tmpCategory);
             _context.SaveChanges();
+            return tmpCategory;
         }
 
         public Category Get(int id)
         {
             return _context.Categories.First(Category => Category.CategoryId == id);
+            
         }
 
-        public IEnumerable<Category> GetAll()
+        public IQueryable<Category> GetAll()
         {
-           List<Category> categoryList = new List<Category>();
-            _context.Categories.ToList().ForEach(category=>categoryList.Add(category));
-            return categoryList;
+            return _context.Categories.AsQueryable();
+
         }
 
-        public bool Update(Category newCategory)
+        public Category Update(Category newCategory)
         {
-            var isExist=_context.Categories.Any(category => category.CategoryId == newCategory.CategoryId);
-            if (isExist)
-            {
-                _context.Categories.Update(newCategory);
-                _context.SaveChanges();
-                return true;
-            }
-            return false;
+            if (newCategory == null) return null;
+            _context.Categories.Update(newCategory);
+            _context.SaveChanges();
+            return newCategory; ;
         }
 
        

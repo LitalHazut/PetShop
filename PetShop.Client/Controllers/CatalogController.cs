@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using PetShop.Client.Models;
 using PetShop.Service;
 using PetShop.Service.Interfaces;
@@ -22,13 +23,25 @@ namespace PetShop.Client.Controllers
         }
         public IActionResult Index()
         {
-            return View(new CatalogViewModel(animalService.GetAll(),categoryService.GetAll()));
+            var petShopDataContext = animalService.GetAll();
+            return View(petShopDataContext);
         }
 
-        public IActionResult Detalis(int id)
+        //public IActionResult Detalis(int id)
+        //{
+        //    return View(new AnimalDetailsViewModel(animalService.Get(id), commentService.GetByAnimalId(id))); ;
+        //}
+        public async Task<IActionResult> Details(int? id)
         {
-            return View(new AnimalDetailsViewModel(animalService.Get(id), commentService.GetByAnimalId(id))); ;
-        }
+            if (id == null) return NotFound();
 
+            var animal = await animalService.GetAll()
+                .Include(a => a.Category)
+                .FirstOrDefaultAsync(m => m.AnimalId == id);
+            if (animal == null)
+                return NotFound();
+
+            return View(animal);
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PetShop.Data.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,9 +10,9 @@ namespace PetShop.Service.Interfaces
     public interface ICRUDService<T> where T : class
     {
         T Get(int id);
-        IEnumerable<T> GetAll();
-        void Delete(T entity);
-        bool Update(T entity);
+        IQueryable<T> GetAll();
+        T Delete(int id);
+        T Update(T entity);
         void Create(T entity);
 
 

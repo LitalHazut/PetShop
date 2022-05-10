@@ -1,8 +1,9 @@
 ﻿@model PetShop.Data.Model.Animal
-
 @{
     ViewData["Title"] = "Details";
 }
+
+<h1>Details</h1>
 <link rel="stylesheet" href="~/css/Admin.css" asp-append-version="true" />
 <h1>Details about @Model.Name</h1>
 
@@ -49,8 +50,6 @@
     </div>
     </dl>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.AnimalId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+
+
 

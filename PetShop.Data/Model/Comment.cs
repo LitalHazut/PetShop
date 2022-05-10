@@ -12,7 +12,7 @@ namespace PetShop.Data.Model
         [Key]
         public int CommentId { get; set; }
         public string Content { get; set; } = null!;
-        public int AnimalId { get; set; }
+        public int? AnimalId { get; set; }
 
         [ForeignKey("AnimalId")]
         [InverseProperty("Comments")]

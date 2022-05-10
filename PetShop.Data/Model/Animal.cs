@@ -17,6 +17,7 @@ namespace PetShop.Data.Model
         [Key]
         public int AnimalId { get; set; }
         [StringLength(200)]
+        [Required]
         public string Name { get; set; } = null!;
         public string? Description { get; set; }
         [Column(TypeName = "date")]

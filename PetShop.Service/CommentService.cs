@@ -22,17 +22,17 @@ namespace PetShop.Service
             _commentRepository.Create(comment);
         }
 
-        public void Delete(Comment comment)
+        public Comment Delete(int commentId)
         {
-            _commentRepository.Delete(comment);
+            return _commentRepository.Delete(commentId);
         }
-
+        
         public Comment Get(int id)
         {
            return _commentRepository.Get(id);   
         }
 
-        public IEnumerable<Comment> GetAll()
+        public IQueryable<Comment> GetAll()
         {
             return _commentRepository.GetAll();
         }
@@ -43,7 +43,7 @@ namespace PetShop.Service
                 .Where(c => c.AnimalId == id);
         }
 
-        public bool Update(Comment comment)
+        public Comment Update(Comment comment)
         {
             return _commentRepository.Update(comment);
         }

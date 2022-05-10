@@ -25,9 +25,9 @@ namespace PetShop.Service
         {
             int animalId = animal.AnimalId;
             _commentRepository.GetAll().Where(comment => comment.AnimalId == animalId)
-            .ToList().ForEach(comment =>_commentRepository.Delete(comment));
+            .ToList().ForEach(comment => _commentRepository.Delete(comment.CommentId));
 
-            _animalRepository.Delete(animal);
+            _animalRepository.Delete(animal.AnimalId);
         }
 
         public IEnumerable<Animal> GetAnimalsByCategory(Category category)
@@ -43,24 +43,29 @@ namespace PetShop.Service
 
         public IEnumerable<Animal> GetTopThreeAnimals()
         {
-            List<int> idList = new List<int>();
-            _commentRepository
-           .GetAll()
-           .GroupBy(comment => comment.AnimalId)
-           .Select(group => new { commentsGroup = group, totalComments = group.Count() })
-           .Take(3)
-           .OrderByDescending(row => row.totalComments)
-           .ToList()
-           .ForEach(row => idList.Add(row.commentsGroup.Key));
-
-            List<Animal> animalList = new List<Animal>();
-            _animalRepository
-            .GetAll()
-            .Where(animal => idList.Contains(animal.AnimalId))
-            .ToList()
-            .ForEach(animal => animalList.Add(animal));
-
-            return animalList;
+            throw new NotImplementedException();
         }
+
+        //public IEnumerable<Animal> GetTopThreeAnimals()
+        //{
+        //    List<int> idList = new List<int>();
+        //    _commentRepository
+        //   .GetAll()
+        //   .GroupBy(comment => comment.AnimalId)
+        //   .Select(group => new { commentsGroup = group, totalComments = group.Count() })
+        //   .Take(3)
+        //   .OrderByDescending(row => row.totalComments)
+        //   .ToList()
+        //   .ForEach(row => idList.Add(row.commentsGroup.Key));
+
+        //    List<Animal> animalList = new List<Animal>();
+        //    _animalRepository
+        //    .GetAll()
+        //    .Where(animal => idList.Contains(animal.AnimalId))
+        //    .ToList()
+        //    .ForEach(animal => animalList.Add(animal));
+
+        //    return animalList;
+        //}
     }
 }

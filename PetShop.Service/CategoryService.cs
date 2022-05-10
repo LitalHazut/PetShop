@@ -22,9 +22,9 @@ namespace PetShop.Service
           _categoryRepository.Create(category);
         }
 
-        public void Delete(Category category)
+        public Category Delete(int categoryId)
         {
-            _categoryRepository.Delete(category);
+            return _categoryRepository.Delete(categoryId);
         }
 
         public Category Get(int id)
@@ -32,13 +32,13 @@ namespace PetShop.Service
             return _categoryRepository.Get(id);
         }
 
-        public IEnumerable<Category> GetAll()
+        public IQueryable<Category> GetAll()
         {
            return _categoryRepository.GetAll();
                             
         }
 
-        public bool Update(Category category)
+        public Category Update(Category category)
         {
            return _categoryRepository.Update(category);   
         }

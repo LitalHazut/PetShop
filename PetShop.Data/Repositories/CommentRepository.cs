@@ -23,37 +23,30 @@ namespace PetShop.Data.Repositories
             _context.SaveChanges();
         }
 
-        public void Delete(Comment comment)
+        public Comment Delete(int commentId)
         {
-            _context.Comments.Remove(comment);
+            var tmpComment = Get(commentId);
+            if (tmpComment == null) return null;
+            _context.Comments.Remove(tmpComment);
             _context.SaveChanges();
-           
-        }
+            return tmpComment;
 
+        }
         public Comment Get(int id)
         {
             return _context.Comments.First(comment=>comment.CommentId==id);            
-            
-                
         }
 
-        public IEnumerable<Comment> GetAll()
+        public IQueryable<Comment> GetAll()
         {
-            List<Comment> commentList=new List<Comment>();
-            _context.Comments.ToList().ForEach(comment =>commentList.Add(comment));
-            return commentList;
-                    
+            return _context.Comments;     
         }
-        public bool Update(Comment newComment)
+        public Comment Update(Comment newComment)
         {
-            var isExist = _context.Comments.Any(comment => comment.CommentId == newComment.CommentId);
-            if (isExist)
-            {
-                _context.Comments.Update(newComment);
-                _context.SaveChanges();
-                return true;
-            }
-            return false;
+             if (newComment == null) return null;
+            _context.Comments.Update(newComment);
+            _context.SaveChanges();
+            return newComment;
         }
     }
 }

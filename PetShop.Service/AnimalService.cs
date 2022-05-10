@@ -22,18 +22,17 @@ namespace PetShop.Service
             _animalRepository.Create(animal);
         }
 
-        public void Delete(Animal animal)
+        public Animal Delete(int id)
         {
-            _animalRepository.Delete(animal);
-
+            return _animalRepository.Delete(id);   
         }
 
-        public bool Update(Animal animal)
+        public Animal Update(Animal animal)
         {
             return _animalRepository.Update(animal);
         }
 
-        public IEnumerable<Animal> GetAll()
+        public IQueryable<Animal> GetAll()
         {
             return _animalRepository.GetAll();
         }
@@ -49,6 +48,6 @@ namespace PetShop.Service
                 Where(animal => animal.Name.ToLower().Contains(name.ToLower()));
         }
 
-
+        
     }
 }

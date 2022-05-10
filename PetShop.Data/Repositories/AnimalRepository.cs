@@ -1,4 +1,5 @@
-﻿using PetShop.Data.Contexts;
+﻿using Microsoft.EntityFrameworkCore;
+using PetShop.Data.Contexts;
 using PetShop.Data.Model;
 using PetShop.Data.Repositories.Interfaces;
 using System;
@@ -19,42 +20,43 @@ namespace PetShop.Data.Repositories
 
         public void Create(Animal animal)
         {
-            _context.Add(animal);
+            _context.Animals.Add(animal);
             _context.SaveChanges();
-          
+
         }
 
-        public void Delete(Animal animal)
+        public Animal Delete(int animalId)
         {
-            _context.Remove(animal);
+            var tmpAnimal = Get(animalId);
+            if (tmpAnimal == null) return null ;
+            _context.Animals.Remove(tmpAnimal);
             _context.SaveChanges();
-
+            return tmpAnimal;
         }
 
         public Animal Get(int id)
         {
 
-            return _context.Animals.First(animal => animal.AnimalId == id);
-           
+            var tmpAnimal = _context.Animals.FirstOrDefault(a => a.AnimalId == id);
+            if (tmpAnimal == null) return null;
+            return tmpAnimal;
+
         }
 
-        public IEnumerable<Animal> GetAll()
+        public IQueryable<Animal> GetAll()
         {
-            List<Animal> animalList = new List<Animal>();
-            _context.Animals.ToList().ForEach(animal => animalList.Add(animal));
-            return animalList;
+            return _context.Animals;
         }
 
-        public bool Update(Animal newAnimal)
+        public Animal Update(Animal newAnimal)
         {
-            var isExist = _context.Animals.Any(animal => animal.AnimalId == newAnimal.AnimalId);
-            if (isExist)
-            {
-                _context.Animals.Update(newAnimal);
-                _context.SaveChanges();
-                return true;
-            }
-            return false;
+            if (newAnimal == null) return null;
+            _context.Animals.Update(newAnimal);
+            _context.SaveChanges();
+            return newAnimal;
+
+
         }
+
     }
 }
