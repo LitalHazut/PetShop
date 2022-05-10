@@ -17,7 +17,8 @@ namespace PetShop.Client.Controllers
         }
         public IActionResult Index()
         {
-            var petShopDataContext = _animalService.GetAll();
+            var petShopDataContext = _animalService.GetAll()
+           .Include(a => a.Category);
             return View(petShopDataContext);
         }
 

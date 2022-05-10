@@ -3,62 +3,102 @@
 @{
     ViewData["Title"] = "Index";
 }
-<link rel="stylesheet" href="~/css/catalog.css" asp-append-version="true" />
-<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+@*<link rel="stylesheet" href="~/css/catalog.css" asp-append-version="true" />*@
+@*<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />*@
 
 <h1>Catalog of Animals:</h1>
 
-<div class="catalogBody">
+@*<div class="catalogBody">
     <div class="categoriesList">
-        <ul>
-            <li>All Animals</li>
-            @foreach (var category in Model)
-            {
-                <li>
-                    @category.Name
-                </li>
-            }
-        </ul>
-    </div>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Name)
-                </th>            
-                <th>
-                    @Html.DisplayNameFor(model => model.PhotoUrl)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Category)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Comments)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
+    <ul>
+    <li>All Animals</li>
+    @foreach (var category in Model)
+    {
+    <li>
+    @category.Name
+    </li>
+    }
+    </ul>
+    </div>*@
+@*<table class="table">
+    <thead>
+    <tr>
+    <th>
+    @Html.DisplayNameFor(model => model.Name)
+    </th>
+    <th>
+    @Html.DisplayNameFor(model => model.PhotoUrl)
+    </th>
+    <th>
+    @Html.DisplayNameFor(model => model.Category)
+    </th>
+    <th>
+    @Html.DisplayNameFor(model => model.Comments)
+    </th>
+    <th></th>
+    </tr>
+    </thead>*@
+@*   <tbody>
+    @foreach (var item in Model)
+    {
+    <tr>
+    <td>
+    @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td>
+    <img src=@Url.Content(item.PhotoUrl) />
+    </td>
+    <td>
+    @Html.DisplayFor(modelItem => item.Category.Name)
+    </td>
+    <td>
+    @Html.DisplayFor(modelItem => item.Comments)
+    </td>
+    <td>
+    <a asp-action="Details" asp-route-id="@item.AnimalId">Details</a>
+    </td>
+    </tr>
+
+    }*@
+@* </tbody>*@
+
+
+
+<div class="album py-5 bg-light">
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                    <td>
-                        <img src=@Url.Content(item.PhotoUrl) />
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Category.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Comments)
-                    </td>
-                    <td>
-                 <a asp-action="Details" asp-route-id="@item.AnimalId">Details</a>
-                 </td>
-                </tr>
-                
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img"><image href=@Url.Content(item.PhotoUrl) height="100%" width="100%" /></svg>
+                        <div class="card-body">
+                            <p class="ctard-ext"> @Html.DisplayFor(modelItem => item.Name)</p>
+                              <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a class="btn btn-sm btn-outline-secondary" asp-action="Details" asp-route-id="@item.AnimalId">Details</a>
+                                </div>
+                                <div class=d-flex>
+                                @*    <span>@Html.DisplayFor(modelItem => item.Comments)</span>*@
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-left" viewBox="0 0 16 16">
+                                        <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             }
-        </tbody>
-    </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+@*    </table>*@

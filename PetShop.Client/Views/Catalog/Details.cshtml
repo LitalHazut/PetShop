@@ -1,9 +1,9 @@
 ﻿@model PetShop.Data.Model.Animal
+
 @{
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
 <link rel="stylesheet" href="~/css/Admin.css" asp-append-version="true" />
 <h1>Details about @Model.Name</h1>
 
@@ -41,14 +41,27 @@
             <dd class="col-sm-10">
                 @Html.DisplayFor(model => model.Category.Name)
             </dd>
+
+        </dl>
     </div>
     <div>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Comments)
+        </dt>
         <form asp-action="AddComment" id="addcomment" asp-all-route-id="@Model?.AnimalId">
-           <textarea id=textArea class="form-control" rows=4 name="myComment"></textarea>
-            <input type="submit" value="AddComment"/>
+            <textarea type="text" id="Content" class="form-control" rows=3 name="content" placeholder="Enter your comment"></textarea>
+            <input type="submit" value="AddComment" />
         </form>
     </div>
-    </dl>
+    <div>
+    </div>
+    @foreach (var comment in Model.Comments)
+    {
+        <div class="form-group">
+            <label asp-for="@comment.CommentId" class="control-label"></label>
+            <input asp-for="@comment.CommentId" class="form-control" />
+        </div>
+    }
 </div>
 
 

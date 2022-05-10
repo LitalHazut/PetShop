@@ -14,6 +14,7 @@ builder.Services.AddScoped<IAnimalRepository, AnimalRepository>();
 builder.Services.AddScoped<IAnimalService, AnimalService>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
+//builder.Services.AddScoped<IBusinessLogic, BusinessLogic>();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();

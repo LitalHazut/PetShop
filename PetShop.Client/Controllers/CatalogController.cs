@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PetShop.Client.Models;
+using PetShop.Data.Model;
 using PetShop.Service;
 using PetShop.Service.Interfaces;
 
@@ -23,8 +24,10 @@ namespace PetShop.Client.Controllers
         }
         public IActionResult Index()
         {
-            var petShopDataContext = animalService.GetAll();
+            var petShopDataContext = animalService.GetAll()
+          .Include(a => a.Category);
             return View(petShopDataContext);
+
         }
 
         //public IActionResult Detalis(int id)
@@ -43,5 +46,31 @@ namespace PetShop.Client.Controllers
 
             return View(animal);
         }
+
+       
+        [HttpPost]
+        public ActionResult AddComment([Bind("Content,AnimalId")] Comment comment, Animal animal)
+        {
+            if (comment.Content != null)
+            {
+                var com = new Comment { AnimalId = animal.AnimalId };
+                commentService.Create(com);
+                animalService.Update(animal);
+                List<Comment> commentList = commentService.GetAll().Where(cmId => cmId.AnimalId == comment.AnimalId).ToList();
+            }
+            return RedirectToAction("Detalis");
+
+
+
+
+
+
+
+
+
+        }
+
+
+
     }
 }

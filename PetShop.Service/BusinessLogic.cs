@@ -23,12 +23,17 @@ namespace PetShop.Service
 
         public void DeleteAnimal(Animal animal)
         {
-            int animalId = animal.AnimalId;
-            _commentRepository.GetAll().Where(comment => comment.AnimalId == animalId)
-            .ToList().ForEach(comment => _commentRepository.Delete(comment.CommentId));
-
-            _animalRepository.Delete(animal.AnimalId);
+            throw new NotImplementedException();
         }
+
+        //public void DeleteAnimal(Animal animal)
+        //{
+        //    int animalId = animal.AnimalId;
+        //    _commentRepository.GetAll().Where(comment => comment.AnimalId == animalId)
+        //    .ToList().ForEach(comment => _commentRepository.Delete(comment.CommentId));
+
+        //    _animalRepository.Delete(animal.AnimalId);
+        //}
 
         public IEnumerable<Animal> GetAnimalsByCategory(Category category)
         {
@@ -43,7 +48,9 @@ namespace PetShop.Service
 
         public IEnumerable<Animal> GetTopThreeAnimals()
         {
-            throw new NotImplementedException();
+            var animalList = _animalRepository.GetAll();
+            var TopThree=animalList.OrderByDescending(animal => animal.Comments.Count()).Take(3);
+            return TopThree;
         }
 
         //public IEnumerable<Animal> GetTopThreeAnimals()
