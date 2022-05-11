@@ -8,17 +8,18 @@ namespace PetShop.Client.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        
-        public HomeController(ILogger<HomeController> logger)
+        private readonly IAnimalService _animalService;
+
+        public HomeController(ILogger<HomeController> logger, IAnimalService animalService)
         {
             _logger = logger;
-         
+            _animalService = animalService;
         }
 
         public IActionResult Index()
         {
-
-            return View();
+            var topAnimals = _animalService.GetTopThreeAnimals();
+            return View(topAnimals);
         }
 
         public IActionResult Privacy()

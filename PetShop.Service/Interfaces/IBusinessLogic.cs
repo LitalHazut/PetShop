@@ -10,8 +10,6 @@ namespace PetShop.Service.Interfaces
 {
     public interface IBusinessLogic
     {
-        void DeleteAnimal(Animal animal);
-         IEnumerable<Animal> GetTopThreeAnimals();
          IEnumerable<Animal> GetAnimalsByCategory(Category category);
     }
 }

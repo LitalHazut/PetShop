@@ -9,6 +9,7 @@ namespace PetShop.Service.Interfaces
 {
     public interface IAnimalService: ICRUDService<Animal>
     {
-        IEnumerable<Animal> SerachByName(string name);
+        IQueryable<Animal> GetTopThreeAnimals();
+
     }
 }

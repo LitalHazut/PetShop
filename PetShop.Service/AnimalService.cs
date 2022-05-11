@@ -1,4 +1,5 @@
-﻿using PetShop.Data.Model;
+﻿using Microsoft.EntityFrameworkCore;
+using PetShop.Data.Model;
 using PetShop.Data.Repositories.Interfaces;
 using PetShop.Service.Interfaces;
 using System;
@@ -42,12 +43,13 @@ namespace PetShop.Service
             return _animalRepository.Get(id);
         }
 
-        public IEnumerable<Animal> SerachByName(string name)
+        public IQueryable<Animal> GetTopThreeAnimals()
         {
-            return _animalRepository.GetAll().
-                Where(animal => animal.Name.ToLower().Contains(name.ToLower()));
+            var animalList = _animalRepository.GetAll().Include(c => c.Comments);
+            var TopThree = animalList.OrderByDescending(animal => animal.Comments.Count()).Take(3);
+            return TopThree;
         }
 
-        
+
     }
 }

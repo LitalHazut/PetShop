@@ -20,9 +20,11 @@ namespace PetShop.Client.Controllers
         }
         public IActionResult Index()
         {
-            var petShopDataContext = _animalService.GetAll()
-           .Include(a => a.Category);
-            return View(petShopDataContext);
+            var Animaldisplay= _animalService.GetAll()
+           .Include(a => a.Comments).Include(a => a.Category);
+            var category = _categoryService.GetAll();
+            ViewBag.GetCategory = category;
+            return View(Animaldisplay);
         }
 
         public async Task<IActionResult> Details(int? id)
@@ -32,10 +34,8 @@ namespace PetShop.Client.Controllers
             var animal = await _animalService.GetAll()
                 .Include(a => a.Category)
                 .FirstOrDefaultAsync(m => m.AnimalId == id);
-            if (animal == null)
-                return NotFound();
+            if (animal == null) return NotFound();
             ViewBag.CommentsAnimal = _commentService.GetByAnimalId(animal.AnimalId);
-            
 
             return View(animal);
         }
@@ -140,7 +140,7 @@ namespace PetShop.Client.Controllers
                 _commentService.Create(Newcomment);
 
             }
-            return RedirectToAction("Detalis", new { id = animal.AnimalId });
+            return RedirectToAction("Details", new { id = animal.AnimalId });
 
         }
         public async Task<ActionResult> DeleteComment(int? id)
@@ -154,11 +154,9 @@ namespace PetShop.Client.Controllers
             _commentService.Delete(comment.CommentId);
 
 
-            return RedirectToAction("Detalis", new { id = comment.AnimalId });
+            return RedirectToAction("Details", new { id = comment.AnimalId });
 
         }
-
-
 
     }
 }

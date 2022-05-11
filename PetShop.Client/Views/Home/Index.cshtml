@@ -2,10 +2,27 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-
 <div class="text-center">
     <h1 class="display-4">Welcome to Pet shop!</h1>
     <br />
-    <h3>The THREE most popular animals with the most Comments: </h3>
-</div>
+    <h5>The THREE most popular animals with the most Comments: </h5>
+
+    <div class="container marketing">
+        <div class="row">
+
+            @* <table class="table">*@
+            @foreach (var animal in @Model)
+            {
+                <div class="col-lg-4">
+                    <img class="rounded-circle" src="@Url.Content(animal.PhotoUrl)" alt="picture of animal" width="140" height="140">
+                    <h2>@animal.Name</h2>
+                    <p>@animal.Description</p>
+
+                    <p><a class="btn btn-sm btn-outline-secondary" asp-action="Details" asp-controller="Catalog" asp-route-id="@animal.AnimalId">View Details</a>
+                </div>
+
+            }
+            @* </table>*@
+        </div>
+    </div>
 

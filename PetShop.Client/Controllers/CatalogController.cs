@@ -24,16 +24,14 @@ namespace PetShop.Client.Controllers
         }
         public IActionResult Index()
         {
-            var petShopDataContext = animalService.GetAll()
-          .Include(a => a.Category);
-            return View(petShopDataContext);
+            var Animaldisplay= animalService.GetAll()
+           .Include(a => a.Comments).Include(a => a.Category);
+            var category = categoryService.GetAll();
+            ViewBag.GetCategory = category;
+            return View(Animaldisplay);
 
         }
 
-        //public IActionResult Detalis(int id)
-        //{
-        //    return View(new AnimalDetailsViewModel(animalService.Get(id), commentService.GetByAnimalId(id))); ;
-        //}
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null) return NotFound();
@@ -43,6 +41,7 @@ namespace PetShop.Client.Controllers
                 .FirstOrDefaultAsync(m => m.AnimalId == id);
             if (animal == null)
                 return NotFound();
+            ViewBag.CommentsAnimal = commentService.GetByAnimalId(animal.AnimalId);
 
             return View(animal);
         }

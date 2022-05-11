@@ -54,8 +54,6 @@ namespace PetShop.Data.Repositories
             _context.Animals.Update(newAnimal);
             _context.SaveChanges();
             return newAnimal;
-
-
         }
 
     }

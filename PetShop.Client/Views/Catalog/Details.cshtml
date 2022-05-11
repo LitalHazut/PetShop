@@ -54,6 +54,18 @@
             <input type="submit" id="btnClick" value="AddComment" />
         </form>
     </div>
+     <div class="comment">
+        <h2>Comments:</h2>
+        @foreach (var comment in ViewBag.CommentsAnimal)
+        {
+            <ul>
+                <li>
+                    @comment.Content
+                </li>
+            </ul>
+        }
+    </div>
+
     <div>
    
 </div>
