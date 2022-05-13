@@ -5,8 +5,6 @@
 }
 
 <link rel="stylesheet" href="~/css/Admin.css" asp-append-version="true" />
-<h1>Details about @Model.Name</h1>
-
 <div>
     <div>
         <hr />
@@ -51,7 +49,7 @@
         <form asp-action="AddComment" id="addcomment" asp-all-route-id="@Model?.AnimalId">
             <input type="hidden" asp-for="AnimalId"/>
             <textarea id="textArea" class="form-control" rows=3 name="myComment" placeholder="Enter your comment"></textarea>
-            <input type="submit" id="btnClick" value="AddComment" />
+            <input class="btn btn-outline-secondary" type="submit" id="btnClick" value="AddComment" />
         </form>
     </div>
      <div class="comment">

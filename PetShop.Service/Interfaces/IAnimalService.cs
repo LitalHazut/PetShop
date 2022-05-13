@@ -10,6 +10,6 @@ namespace PetShop.Service.Interfaces
     public interface IAnimalService: ICRUDService<Animal>
     {
         IQueryable<Animal> GetTopThreeAnimals();
-
+        IEnumerable<Animal> GetAnimalsByCategory(int id);
     }
 }

@@ -50,6 +50,16 @@ namespace PetShop.Service
             return TopThree;
         }
 
-
+        public IEnumerable<Animal> GetAnimalsByCategory(int categoryId)
+        {
+            List<Animal> animalList = new List<Animal>();
+            _animalRepository.GetAll()
+                .Where(animal => animal.CategoryId == categoryId)
+                .ToList()
+                .ForEach(animal => animalList.Add(animal));
+            return animalList;
+        }
+        
+       
     }
 }

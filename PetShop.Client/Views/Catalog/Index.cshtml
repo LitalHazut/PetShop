@@ -11,23 +11,23 @@
     @foreach(var category in ViewBag.GetCategory)
     {
         <div class="btn-group">
-          <a class="btn btn-sm btn-outline-secondary" asp-action="Index">@category.Name</a>
+        <a class="btn btn-sm btn-outline-secondary" asp-action="Index">@category.Name</a>
         </div>
     }
 </p>
-<div class="album py-5 bg-light">
+<div class="album py-5">
     <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             @foreach (var item in Model)
             {
                 <div class="col">
                     <div class="card shadow-sm">
-                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img"><image href=@Url.Content(item.PhotoUrl) height="100%" width="100%" /></svg>
+                        <svg class="bd-placeholder-img card-img-top mt-3" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img"><image href=@Url.Content(item.PhotoUrl) height="100%" width="100%" /></svg>
                         <div class="card-body">
-                            <p class="ctard-ext"> @Html.DisplayFor(modelItem => item.Name)</p>
+                            <p class="ctard-ext">@Html.DisplayFor(modelItem => item.Name)</p>
                               <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <a class="btn btn-sm btn-outline-secondary" asp-action="Details" asp-route-id="@item.AnimalId">Details</a>
+                                    <a class="btn btn-sm btn-outline-secondary" style="display:inline-block;" asp-action="Details" asp-route-id="@item.AnimalId">View Details</a>
                                 </div>
                                 <div class=d-flex>
                                  <span asp-route-id="@item?.AnimalId">@item.Comments.Count</span>

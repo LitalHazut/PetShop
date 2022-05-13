@@ -1,27 +1,32 @@
 ﻿body {
+}
 
-}
 #textArea {
-    width: 30%;
+    width: 50%;
 }
+
 img {
     height: 150px;
     width: auto;
-    align-content:center
+    align-content: center
 }
+
 .comment {
     margin-left: auto;
 }
+
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
+
 .col-lg-4 {
     justify-content: center;
-    
 }
+
 button {
     display: inline-block;
-    
 }
+
+

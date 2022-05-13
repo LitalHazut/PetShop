@@ -40,7 +40,7 @@ namespace PetShop.Data.Repositories
 
         public IQueryable<Category> GetAll()
         {
-            return _context.Categories.AsQueryable();
+            return _context.Categories;
 
         }
 

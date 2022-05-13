@@ -2,6 +2,8 @@
 @{
     ViewData["Title"] = "Home Page";
 }
+
+
 <div class="text-center">
     <h1 class="display-4">Welcome to Pet shop!</h1>
     <br />
@@ -17,10 +19,9 @@
                     <img class="rounded-circle" src="@Url.Content(animal.PhotoUrl)" alt="picture of animal" width="140" height="140">
                     <h2>@animal.Name</h2>
                     <p>@animal.Description</p>
-
-                    <p><a class="btn btn-sm btn-outline-secondary" asp-action="Details" asp-controller="Catalog" asp-route-id="@animal.AnimalId">View Details</a>
+                    <a class="btn btn-sm btn-outline-secondary" asp-action="Details" asp-controller="Catalog" asp-route-id="@animal.AnimalId">View Details</a>
                 </div>
-
+                
             }
             @* </table>*@
         </div>

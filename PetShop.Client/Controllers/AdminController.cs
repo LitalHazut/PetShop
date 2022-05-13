@@ -18,13 +18,28 @@ namespace PetShop.Client.Controllers
             _categoryService = categoryService;
             _commentService = commentService;
         }
+
+        
         public IActionResult Index()
         {
-            var Animaldisplay= _animalService.GetAll()
+            var Animaldisplay = _animalService.GetAll()
            .Include(a => a.Comments).Include(a => a.Category);
+
             var category = _categoryService.GetAll();
             ViewBag.GetCategory = category;
+
             return View(Animaldisplay);
+        }
+
+        [HttpPost]
+        public IActionResult Index(int categoryId)
+        {
+            var category = _categoryService.GetAll();
+            ViewBag.GetCategory = category;
+
+            var animalsByCategory = _animalService.GetAnimalsByCategory(categoryId);
+          
+            return View(animalsByCategory);
         }
 
         public async Task<IActionResult> Details(int? id)
@@ -53,7 +68,7 @@ namespace PetShop.Client.Controllers
             if (ModelState.IsValid)
             {
                 _animalService.Create(animal);
-                //await _context.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CategoryId"] = new SelectList(_categoryService.GetAll(), "CategoryId", "Name", animal.CategoryId);
@@ -155,8 +170,9 @@ namespace PetShop.Client.Controllers
 
 
             return RedirectToAction("Details", new { id = comment.AnimalId });
-
         }
+
+       
 
     }
 }

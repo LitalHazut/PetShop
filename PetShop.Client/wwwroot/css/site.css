@@ -1,5 +1,6 @@
 html {
     font-size: 14px;
+   
 }
 
 @media (min-width: 768px) {
@@ -15,7 +16,9 @@ html {
 
 body {
     margin-bottom: 60px;
-    background-color: #F5F5DC;
+    background: #DAD299;
+    background: -webkit-linear-gradient(to right, #B0DAB9, #DAD299); 
+    background: linear-gradient(to right, #B0DAB9, #DAD299); 
 }
 
 .container {
@@ -37,8 +40,8 @@ body {
 }
 
 .logo {
-    height: 70px;
-    width: 70px;
+    height: 100px;
+    width: 100px;
 }
 li {
     margin: 20px;
@@ -48,5 +51,8 @@ img{
     height:auto;
 }
 a:hover {
-    text-shadow: -.25px -.25px 0 black, .25px .25px black;
+    background-color: #D2B48C;
+}
+nav{
+    height:100px;
 }
