@@ -58,8 +58,18 @@ namespace PetShop.Client.Controllers
 
             return View(animal);
         }
+        public ActionResult AddComment(Animal animal, [Bind("myComment")] string myComment)
+        {
+            if (myComment != null)
+            {
+                var Newcomment = new Comment { AnimalId = animal.AnimalId, Content = myComment };
+                commentService.Create(Newcomment);
 
-     
+            }
+            return RedirectToAction("Details", new { id = animal.AnimalId });
+
+        }
+
 
     }
 }

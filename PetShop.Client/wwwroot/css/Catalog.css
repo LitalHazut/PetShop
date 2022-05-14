@@ -1,46 +1,40 @@
 ﻿body {
-  
 }
 
-.catalogBody {
-    display: flex;
-    direction: ltr;
-    position: relative;
-    right: 60px;
+#textArea {
+   width: 50%;
+   float:left;
+   bottom:auto;
 }
 
-.catalogList {
-    padding: 50px;
-    flex-grow: 1;
+img {
+    height: 200px;
+    width: auto;
+    border-radius: 5px;
+    display: block;
+    max-width: 100%
 }
 
-.categoryList {
-    flex-grow: 1;
-}
-
-li {
+ul {
     list-style-type: none;
-    margin: 50px;
-    
+    margin: 0;
+    padding: 0;
 }
 
-.animalList {
-    display: flex;
-    flex-direction: row;
-    border: solid black 2px;
-    text-align: center;
-    width: 100%;
+.details {
+    float: right;
+    width: 30rem;
 }
-
-.animalDiv {
-    display: flex;
-    margin:130px;
+.imgName {
+    width: 18rem;
+    float: left;
+    height:15rem;
 }
-
-li:hover {
-    text-decoration: underline;
+.description{
+    font-size:16px;
 }
-
-h1 {
-    text-align: center;
+button{
+    background: #DAD299;
+    background: -webkit-linear-gradient(to right, #B0DAB9, #DAD299);
+    background: linear-gradient(to right, #B0DAB9, #DAD299);
 }

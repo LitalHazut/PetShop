@@ -3,9 +3,7 @@
 @{
     ViewData["Title"] = "Edit";
 }
-<h1>Edit</h1>
-
-<h4>Animal</h4>
+<h1>Edit Animal:</h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -36,16 +34,15 @@
                 <label asp-for="CategoryId" class="control-label"></label>
                 <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
                 <span asp-validation-for="CategoryId" class="text-danger"></span>
+                <br />
                 <div class="form-group">
-                    <input type="submit" value="Save" class="btn btn-warning" />
+                    <a style="font-size:18px;" class="btn btn-sm btn-outline-secondary" asp-action="Index">Back to List</a>
+                    <input style="font-size:18px;" type="submit" value="Save" class="btn btn-sm btn-outline-secondary" />
                 </div>
+
+            </div>
         </form>
     </div>
-</div>
-
-<br/>
-<div>
-    <a class="btn btn-sm btn-outline-secondary" asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

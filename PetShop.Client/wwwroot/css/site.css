@@ -48,11 +48,13 @@ li {
     margin: 20px;
 }
 img{
-    width:150px;
+    width:200px;
     height:auto;
 }
 a:hover {
-    background-color: #D2B48C;
+    background: #DAD299;
+    background: -webkit-linear-gradient(to right, #B0DAB9, #DAD299);
+    background: linear-gradient(to right, #B0DAB9, #DAD299);
 }
 nav{
     height:100px;
