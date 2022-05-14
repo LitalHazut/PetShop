@@ -17,14 +17,14 @@
         </div>
     }
 </form>
-<div class="album py-5 bg-light">
+<div class="album py-5">
     <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             @foreach (var item in Model)
             {
                 <div class="col">
                     <div class="card shadow-sm">
-                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img"><image href=@Url.Content(item.PhotoUrl) height="100%" width="100%" /></svg>
+                        <svg class="bd-placeholder-img card-img-top mt-3" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img"><image href=@Url.Content(item.PhotoUrl) height="100%" width="100%" /></svg>
                         <div class="card-body">
                             <p class="ctard-ext">@item.Name</p>
                             <div class="d-flex justify-content-between align-items-center">

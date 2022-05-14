@@ -3,27 +3,30 @@
     ViewData["Title"] = "Home Page";
 }
 
-
+<link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
 <div class="text-center">
-    <h1 class="display-4">Welcome to Pet shop!</h1>
+    <h1 class="display-4" >Welcome to Pet shop!</h1>
     <br />
     <h5>The THREE most popular animals with the most Comments: </h5>
-
+    <br/>
     <div class="container marketing">
         <div class="row">
 
-            @* <table class="table">*@
-            @foreach (var animal in @Model)
+            @foreach (var animal in Model)
             {
                 <div class="col-lg-4">
+                    <div class="photoAnimal">
                     <img class="rounded-circle" src="@Url.Content(animal.PhotoUrl)" alt="picture of animal" width="140" height="140">
+                    </div>
                     <h2>@animal.Name</h2>
-                    <p>@animal.Description</p>
+                    <div class= "description">
+                        <p>@animal.Description</p>
+                    </div>
                     <a class="btn btn-sm btn-outline-secondary" asp-action="Details" asp-controller="Catalog" asp-route-id="@animal.AnimalId">View Details</a>
                 </div>
-                
+
             }
-            @* </table>*@
+
         </div>
     </div>
 

@@ -1,6 +1,6 @@
 html {
     font-size: 14px;
-   
+  
 }
 
 @media (min-width: 768px) {
@@ -17,8 +17,9 @@ html {
 body {
     margin-bottom: 60px;
     background: #DAD299;
-    background: -webkit-linear-gradient(to right, #B0DAB9, #DAD299); 
-    background: linear-gradient(to right, #B0DAB9, #DAD299); 
+    background: -webkit-linear-gradient(to right, #B0DAB9, #DAD299);
+    background: linear-gradient(to right, #B0DAB9, #DAD299);
+    font-family: Georgia;
 }
 
 .container {

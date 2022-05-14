@@ -26,10 +26,23 @@ namespace PetShop.Client.Controllers
         {
             var Animaldisplay= animalService.GetAll()
            .Include(a => a.Comments).Include(a => a.Category);
+
             var category = categoryService.GetAll();
             ViewBag.GetCategory = category;
+
             return View(Animaldisplay);
 
+        }
+
+        [HttpPost]
+        public IActionResult Index(int categoryId)
+        {
+            var category = categoryService.GetAll();
+            ViewBag.GetCategory = category;
+
+            var animalsByCategory = animalService.GetAnimalsByCategory(categoryId);
+
+            return View(animalsByCategory);
         }
 
         public async Task<IActionResult> Details(int? id)

@@ -1,0 +1,14 @@
+﻿body {
+}
+.photoAnimal{
+    height:8rem;
+  
+}
+.description{
+    
+    height:8rem;
+}
+.btn btn-sm btn-outline-secondary {
+    margin-bottom: 0;
+    position: relative;
+}

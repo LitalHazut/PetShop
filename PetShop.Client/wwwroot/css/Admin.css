@@ -11,10 +11,6 @@ img {
     align-content: center
 }
 
-.comment {
-    margin-left: auto;
-}
-
 ul {
     list-style-type: none;
     margin: 0;
@@ -28,5 +24,3 @@ ul {
 button {
     display: inline-block;
 }
-
-
