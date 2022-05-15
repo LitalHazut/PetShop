@@ -8,7 +8,10 @@
 <h1>Animals:</h1>
 <p>
     <a class="btn btn-sm btn-outline-secondary" asp-action="Create">Create New Animal</a>
+    <a class="btn btn-sm btn-outline-secondary" asp-action="AddCategory">Add/Delete Category</a>
 </p>
+
+
 <form asp-action="Index">
     @foreach(var category in ViewBag.GetCategory)
     {

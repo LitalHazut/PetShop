@@ -20,7 +20,7 @@ namespace PetShop.Data.Repositories
         public void Create(Category category)
         {
             _context.Categories.Add(category);
-            _context.SaveChanges(); 
+            _context.SaveChanges();
         }
 
         public Category Delete(int categoryId)

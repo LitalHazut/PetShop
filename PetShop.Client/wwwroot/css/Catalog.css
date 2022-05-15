@@ -38,3 +38,13 @@ button{
     background: -webkit-linear-gradient(to right, #B0DAB9, #DAD299);
     background: linear-gradient(to right, #B0DAB9, #DAD299);
 }
+.form-control {
+    width:50%;
+}
+.add {
+    height: 15rem
+}
+
+.delete{
+    height:15rem
+}

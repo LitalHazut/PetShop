@@ -19,7 +19,7 @@ namespace PetShop.Client.Controllers
             _commentService = commentService;
         }
 
-        
+
         public IActionResult Index()
         {
             var Animaldisplay = _animalService.GetAll()
@@ -38,7 +38,7 @@ namespace PetShop.Client.Controllers
             ViewBag.GetCategory = category;
 
             var animalsByCategory = _animalService.GetAnimalsByCategory(categoryId);
-          
+
             return View(animalsByCategory);
         }
 
@@ -158,6 +158,7 @@ namespace PetShop.Client.Controllers
             return RedirectToAction("Details", new { id = animal.AnimalId });
 
         }
+
         public async Task<ActionResult> DeleteComment(int? id)
         {
             if (id == null) return NotFound();
@@ -172,7 +173,35 @@ namespace PetShop.Client.Controllers
             return RedirectToAction("Details", new { id = comment.AnimalId });
         }
 
-       
+        public ActionResult AddCategory([Bind("myCategory")] string myCategory)
+        {
+            if (myCategory != null)
+            {
+                var NewCategory = new Category { Name = myCategory };
+                _categoryService.Create(NewCategory);
+
+            }
+            ViewData["CategoryId"] = new SelectList(_categoryService.GetAll(), "CategoryId", "Name");
+
+            return View();
+
+        }
+
+        
+        public async Task<IActionResult> DeleteCategory(int? categoryId)
+        {
+            if (categoryId == null) return NotFound();
+            var category = await _categoryService.GetAll()
+               .FirstOrDefaultAsync(c => c.CategoryId == categoryId);
+
+            if (category == null) return NotFound();
+            _categoryService.Delete(category.CategoryId);
+
+
+            return RedirectToAction("AddCategory");
+
+
+        }
 
     }
 }
