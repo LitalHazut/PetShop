@@ -7,7 +7,7 @@
     <h2>Add Category:</h2>
     <form asp-action="AddCategory" asp-all-route-id="@Model?.Category">
         <h5>Write Category you want to Add:</h5>
-        <input asp-for="Category" name="myCategory" class="form-control" />
+        <input asp-for="Category" name="myCategory" class="form-control sizeof"  />
         <span asp-validation-for="Category" class="text-danger"></span>
         <br />
         <input class="btn btn-outline-secondary" type="submit" value="Add Category" />
@@ -17,10 +17,11 @@
     <h2>Delete Category:</h2>
     <h5>
         If you want to delete a category:
+        <br/>
         Choose and click Delete
     </h5>
     <form asp-action="DeleteCategory" asp-route-categoryId="@Model?.CategoryId">
-        <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+        <select asp-for="CategoryId" class="form-control sizeof " asp-items="ViewBag.CategoryId"></select>
         <br />
         <input type="submit" value="Delete Category" class="btn btn-danger" />
     </form>
