@@ -63,7 +63,7 @@ namespace PetShop.Client.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("AnimalId,Name,Description,BirthDate,PhotoUrl,CategoryId")] Animal animal)
+        public  IActionResult Create([Bind("AnimalId,Name,Description,BirthDate,PhotoUrl,CategoryId")] Animal animal)
         {
             if (ModelState.IsValid)
             {
@@ -75,7 +75,7 @@ namespace PetShop.Client.Controllers
             return View(animal);
 
         }
-        public async Task<IActionResult> Edit(int id)
+        public IActionResult Edit(int id)
         {
             var animal = _animalService.Get(id);
             if (animal == null)
@@ -88,7 +88,7 @@ namespace PetShop.Client.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("AnimalId,Name,Description,BirthDate,PhotoUrl,CategoryId")] Animal animal)
+        public IActionResult Edit(int id, [Bind("AnimalId,Name,Description,BirthDate,PhotoUrl,CategoryId")] Animal animal)
         {
             if (id != animal.AnimalId)
                 return NotFound();
