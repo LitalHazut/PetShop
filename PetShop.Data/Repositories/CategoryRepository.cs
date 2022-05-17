@@ -34,16 +34,13 @@ namespace PetShop.Data.Repositories
 
         public Category Get(int id)
         {
-            return _context.Categories.First(Category => Category.CategoryId == id);
-            
+            return _context.Categories.First(Category => Category.CategoryId == id);       
         }
 
         public IQueryable<Category> GetAll()
         {
             return _context.Categories;
-
         }
-
         public Category Update(Category newCategory)
         {
             if (newCategory == null) return null;

@@ -22,7 +22,6 @@ namespace PetShop.Data.Repositories
         {
             _context.Animals.Add(animal);
             _context.SaveChanges();
-
         }
 
         public Animal Delete(int animalId)

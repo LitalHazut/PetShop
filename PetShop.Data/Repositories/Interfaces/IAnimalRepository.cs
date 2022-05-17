@@ -9,6 +9,6 @@ namespace PetShop.Data.Repositories.Interfaces
 {
     public interface IAnimalRepository : IRepository<Animal>
     {
-        //IEnumerable<Animal> GetTopThreeAnimals();
+        
     }
 }
