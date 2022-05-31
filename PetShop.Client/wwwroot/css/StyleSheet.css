@@ -1,0 +1,13 @@
+﻿html,
+body {
+    height: 100%;
+  
+}
+
+img {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;   
+    z-index: -1;
+}

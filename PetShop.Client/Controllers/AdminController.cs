@@ -19,7 +19,6 @@ namespace PetShop.Client.Controllers
             _commentService = commentService;
         }
 
-
         public IActionResult Index()
         {
             var Animaldisplay = _animalService.GetAll()
