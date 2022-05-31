@@ -16,7 +16,9 @@ html {
 
 body {
     margin-bottom: 60px;
-    background-color: #ADD8E6;
+    background: #DAD299;
+    background: -webkit-linear-gradient(to right, #B0DAB9, #DAD299);
+    background: linear-gradient(to right, #B0DAB9, #DAD299);
     font-family: Georgia;
 }
 
@@ -35,12 +37,13 @@ body {
 }
 
 .vertical-menu a:hover {
-        background-color: #87CEFA;
+        background: #DAD299;
+        background: -webkit-linear-gradient(to right, #B0DAB9, #DAD299);
+        background: linear-gradient(to right, #B0DAB9, #DAD299);
 }
-
 .logo {
-    height: 100px;
-    width: 100px;
+    height: 150px;
+    width: 150px;
 }
 li {
     margin: 20px;

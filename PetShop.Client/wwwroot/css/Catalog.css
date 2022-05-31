@@ -34,7 +34,9 @@ ul {
     font-size:16px;
 }
 button {
-    background-color: #FFF0F5;
+    background: #DAD299;
+    background: -webkit-linear-gradient(to right, #B0DAB9, #DAD299);
+    background: linear-gradient(to right, #B0DAB9, #DAD299);
 }
 .form-control {
     width:50%;

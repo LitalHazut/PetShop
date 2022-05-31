@@ -2,29 +2,53 @@
 
 @{
     ViewBag.Title = "Login";
-    Layout = null;
+
 }
 
-<link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sign-in/">
-<link rel="stylesheet" href="~/css/StyleSheet.css" asp-append-version="true" />
-<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="signin.css" rel="stylesheet">
-<body class="text-center">
-    <div>
-    <form method="post" asp-action="Login">
-        <div>
-            <p> User - Name : </p>
-            <input type="text" placeholder="Enter User Name" asp-for="UserName" />
+<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="css/StyleSheet.css">
+
+<body>
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-4 text-center mb-5">
+                    <h2 class="heading-section">Login</h2>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-lg-4">
+                    <div class="login-wrap p-0">
+                        <h3 class="mb-4 text-center">Have an account?</h3>
+                        <form method="post" asp-action="Login" class="signin-form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" asp-for="UserName" placeholder="Username" required>
+                            </div>
+                            <div class="form-group">
+                                <input id="password-field" asp-for="Password" type="password" class="form-control" placeholder="Password" required>
+                                <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="form-control btn btn-primary submit px-3">Sign In</button>
+                            </div>
+                            <div class="form-group d-md-flex">
+                                <div class="w-50">
+                                    <label class="checkbox-wrap checkbox-primary">
+                                        Remember Me
+                                        <input type="checkbox" checked>
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </form>
+                       <img class="admin" src=~/images/admin.png/>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div>
-            <p>Password: </p>
-            <input asp-for="Password" type="password" placeholder="Enter Password" />
-        </div>
-        <input class="w-100 btn btn-lg btn-primary" type="submit" value="Login" />
-    </form>
-    </div>
-        <img  src=~/images/bg.jpg/>
+    </section>
+
 </body>
-
-
-
