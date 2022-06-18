@@ -146,18 +146,6 @@ namespace PetShop.Client.Controllers
             return _animalService.GetAll().Any(e => e.AnimalId == id);
         }
 
-        public ActionResult AddComment(Animal animal, [Bind("myComment")] string myComment)
-        {
-            if (myComment != null)
-            {
-                var Newcomment = new Comment { AnimalId = animal.AnimalId, Content = myComment };
-                _commentService.Create(Newcomment);
-
-            }
-            return RedirectToAction("Details", new { id = animal.AnimalId });
-
-        }
-
         public async Task<ActionResult> DeleteComment(int? id)
         {
             if (id == null) return NotFound();
