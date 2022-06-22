@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI.V4.Pages.Account.Internal;
 using Microsoft.AspNetCore.Mvc;
+using NuGet.Common;
 using PetShop.Client.Models;
+using Xceed.Wpf.Toolkit;
 
 namespace PetShop.Client.Controllers
 {
@@ -27,13 +28,19 @@ namespace PetShop.Client.Controllers
 
         public async Task<IActionResult> Login(LoginPageModel login)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var result = await _signInManager.PasswordSignInAsync(login.UserName, login.Password, false, false);
                 if (result.Succeeded)
                 {
                     return RedirectToAction("Index", "Admin");
-                }  
+                }
+                else
+                {
+                    TempData["msg"] = "<script>alert('try again');</script>";
+                  
+                        return RedirectToAction("Index", "Account");
+                }
             }
             return View();
         }
