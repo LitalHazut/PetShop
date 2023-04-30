@@ -21,6 +21,7 @@
 - admin page:
 <p>This page presents a login to admin :
 The administrator interface gives him capabilities that the user does not have.
-For example: through the administrator you can add an animal, delete an animal, add details about the animal, add a category and delete an inappropriate comment.</p>
+For example: through the administrator you can add an animal, delete an animal, add details about the animal, add/delete a category and delete an inappropriate comment.</p>
 
 <img width="784" alt="adminpage" src="https://user-images.githubusercontent.com/102611205/235346173-9f0087a4-50c4-4de4-bf8b-58d972d0adb2.png">
+<img width="867" alt="admin" src="https://user-images.githubusercontent.com/102611205/235346379-275953e9-d3fa-4e3c-9545-df3a4884ba0d.png">
